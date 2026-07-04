@@ -181,8 +181,10 @@
 <script>
 // Prefill via URL (?nome=&email=)
 const q = new URLSearchParams(location.search);
-if(q.get('nome'))  document.getElementById('f-nome').value  = q.get('nome');
-if(q.get('email')) document.getElementById('f-email').value = q.get('email');
+const pnome = q.get('nome') || q.get('invitee_full_name');
+const pemail = q.get('email') || q.get('invitee_email');
+if(pnome)  document.getElementById('f-nome').value  = pnome;
+if(pemail) document.getElementById('f-email').value = pemail;
 
 // Barra de progresso
 const form = document.getElementById('ps-form');
