@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="theme-color" content="#0B0F1A">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preparação da sua Leitura, Jogo da Alma</title>
+<meta name="robots" content="noindex">
+<!-- SUBSTITUIR: [URL_WEBHOOK_N8N] no script do fim. Prefill: pre-sessao.html?nome=X&email=Y -->
+<style>
+  :root{--bg:#0B0F1A;--card:#151C2C;--border:#232B3E;--text:#E5E7EB;--muted:#9CA3AF;
+        --violet:#8B5CF6;--violet2:#A855F7;--gold:#EAB308;--green:#22C55E}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.65}
+  .wrap{max-width:680px;margin:0 auto;padding:40px 22px 80px}
+  h1{font-size:1.6rem;margin-bottom:8px}
+  .sub{color:var(--muted);margin-bottom:28px}
+  .bloco{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:18px}
+  .bloco h2{font-size:1.05rem;color:var(--violet2);margin-bottom:14px}
+  label{display:block;font-weight:600;margin:16px 0 6px}
+  label .opt{font-weight:400;color:var(--muted);font-size:.85rem}
+  .hint{font-size:.88rem;color:var(--muted);margin-bottom:8px}
+  input[type=text],input[type=email],textarea,select{width:100%;padding:12px;border-radius:10px;
+    border:1px solid var(--border);background:var(--bg);color:var(--text);font-family:inherit;font-size:.95rem}
+  textarea{min-height:110px;resize:vertical}
+  .radio, .check{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border:1px solid var(--border);
+    border-radius:10px;margin-bottom:8px;cursor:pointer;transition:border-color .15s}
+  .radio:hover, .check:hover{border-color:var(--violet)}
+  .radio input, .check input{margin-top:4px;accent-color:var(--violet)}
+  .slider-row{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+  .slider-row span.lbl{flex:1;font-size:.9rem}
+  .slider-row input[type=range]{flex:1;accent-color:var(--violet)}
+  .slider-row output{width:26px;text-align:center;color:var(--gold);font-weight:700}
+  .aviso{border-left:3px solid var(--gold);background:rgba(234,179,8,0.06);padding:14px 18px;
+    border-radius:0 10px 10px 0;font-size:.88rem;color:var(--muted);margin-top:14px}
+  .btn{display:block;width:100%;padding:16px;border:none;border-radius:12px;cursor:pointer;
+    background:linear-gradient(135deg,var(--violet),var(--violet2));color:#fff;font-weight:700;
+    font-size:1.05rem;margin-top:10px}
+  .progress{position:sticky;top:0;height:5px;background:var(--border);z-index:9;margin:0 -22px}
+  .progress div{height:100%;width:0;background:linear-gradient(90deg,var(--violet),var(--gold));transition:width .3s}
+  #ok{display:none;text-align:center;padding:70px 20px}
+  #ok h2{color:var(--green);margin-bottom:12px}
+
+  /* mobile/UX upgrade */
+  html{scroll-behavior:smooth}
+  input[type=text],input[type=email],textarea{font-size:16px}
+  .btn:active{transform:scale(.98)}
+  input:focus-visible,textarea:focus-visible,.btn:focus-visible{outline:2px solid var(--violet2);outline-offset:2px}
+  @media(max-width:520px){
+    .wrap{padding:28px 16px 60px}
+    .bloco{padding:18px 14px}
+    .slider-row{flex-wrap:wrap;row-gap:4px}
+    .slider-row span.lbl{flex:1 1 100%}
+    .radio,.check{padding:12px}
+  }
+</style>
+</head>
+<body>
+<div class="progress"><div id="pbar"></div></div>
+<div class="wrap">
+
+<div id="form-area">
+  <h1>Preparação da sua Leitura</h1>
+  <p class="sub">~10 minutos. Quanto mais verdadeiro, mais funda a leitura. Nada disso é compartilhado com ninguém, é o material de preparação da sua sessão.</p>
+
+  <form id="ps-form">
+
+    <div class="bloco">
+      <h2>Você</h2>
+      <label>Seu nome</label>
+      <input type="text" name="nome" id="f-nome" required>
+      <label>Seu email</label>
+      <input type="email" name="email" id="f-email" required>
+    </div>
+
+    <div class="bloco">
+      <h2>O que te traz</h2>
+      <label>O que te traz até a Leitura?</label>
+      <label class="radio"><input type="radio" name="porta" value="objetivo" required><span>Tenho um <strong>objetivo claro</strong> que não anda</span></label>
+      <label class="radio"><input type="radio" name="porta" value="situacao"><span>Tenho uma <strong>situação</strong> que me incomoda ou se repete</span></label>
+      <label class="radio"><input type="radio" name="porta" value="difusa"><span>Uma sensação difusa de que <strong>algo está fora do lugar</strong></span></label>
+
+      <label>Descreva com suas palavras</label>
+      <p class="hint">Escreva como se estivesse desabafando com alguém de confiança: primeira pessoa, sem editar, com a emoção que vier. Quanto mais cru, melhor a leitura.</p>
+      <textarea name="relato" required></textarea>
+    </div>
+
+    <div class="bloco">
+      <h2>As três perguntas de ouro</h2>
+      <label>Qual resultado você persegue há tempo, e não vem?</label>
+      <textarea name="resultado_perseguido" style="min-height:70px" required></textarea>
+
+      <label>O que você já tentou? <span class="opt">(marque todas)</span></label>
+      <label class="check"><input type="checkbox" name="tentou" value="terapia"><span>Terapia / psicólogo</span></label>
+      <label class="check"><input type="checkbox" name="tentou" value="meditacao"><span>Meditação</span></label>
+      <label class="check"><input type="checkbox" name="tentou" value="coaching"><span>Coaching</span></label>
+      <label class="check"><input type="checkbox" name="tentou" value="cursos"><span>Cursos de desenvolvimento pessoal</span></label>
+      <label class="check"><input type="checkbox" name="tentou" value="religiao"><span>Religião / espiritualidade</span></label>
+      <label class="check"><input type="checkbox" name="tentou" value="energeticas"><span>Constelação / terapias energéticas</span></label>
+      <label class="check"><input type="checkbox" name="tentou" value="livros"><span>Livros e conteúdo</span></label>
+      <label class="check"><input type="checkbox" name="tentou" value="sozinho"><span>Mudanças por conta própria</span></label>
+      <label class="check"><input type="checkbox" name="tentou" value="nada"><span>Nada estruturado ainda</span></label>
+      <label>O que mais te ajudou? E o que menos? <span class="opt">(opcional)</span></label>
+      <input type="text" name="ajudou">
+
+      <label>O que dói mais <em>hoje</em>?</label>
+      <textarea name="dor_hoje" style="min-height:70px" required></textarea>
+    </div>
+
+    <div class="bloco">
+      <h2>Um retrato rápido <span style="color:var(--muted);font-weight:400;font-size:.85rem">, de 0 (no chão) a 10 (ótimo), como está cada área hoje?</span></h2>
+      <div class="slider-row"><span class="lbl">Segurança material e corpo</span><input type="range" name="r_seguranca" min="0" max="10" value="5" oninput="this.nextElementSibling.value=this.value"><output>5</output></div>
+      <div class="slider-row"><span class="lbl">Prazer e desfrute</span><input type="range" name="r_prazer" min="0" max="10" value="5" oninput="this.nextElementSibling.value=this.value"><output>5</output></div>
+      <div class="slider-row"><span class="lbl">Vontade e limites (sustentar um "não")</span><input type="range" name="r_vontade" min="0" max="10" value="5" oninput="this.nextElementSibling.value=this.value"><output>5</output></div>
+      <div class="slider-row"><span class="lbl">Vínculos e amor</span><input type="range" name="r_vinculos" min="0" max="10" value="5" oninput="this.nextElementSibling.value=this.value"><output>5</output></div>
+      <div class="slider-row"><span class="lbl">Expressão (dizer o que precisa ser dito)</span><input type="range" name="r_expressao" min="0" max="10" value="5" oninput="this.nextElementSibling.value=this.value"><output>5</output></div>
+      <div class="slider-row"><span class="lbl">Clareza mental e visão</span><input type="range" name="r_clareza" min="0" max="10" value="5" oninput="this.nextElementSibling.value=this.value"><output>5</output></div>
+      <div class="slider-row"><span class="lbl">Sentido e direção</span><input type="range" name="r_sentido" min="0" max="10" value="5" oninput="this.nextElementSibling.value=this.value"><output>5</output></div>
+    </div>
+
+    <div class="bloco">
+      <h2>Seu mundo</h2>
+      <label>Em quais desses mundos você se sente em casa? <span class="opt">(até 2)</span></label>
+      <label class="check"><input type="checkbox" name="mundo" value="treino"><span>Treino / esporte</span></label>
+      <label class="check"><input type="checkbox" name="mundo" value="negocios"><span>Negócios / empreender</span></label>
+      <label class="check"><input type="checkbox" name="mundo" value="arte"><span>Arte / música</span></label>
+      <label class="check"><input type="checkbox" name="mundo" value="games"><span>Games / anime</span></label>
+      <label class="check"><input type="checkbox" name="mundo" value="natureza"><span>Natureza</span></label>
+      <label class="check"><input type="checkbox" name="mundo" value="fe"><span>Fé / espiritualidade</span></label>
+      <label class="check"><input type="checkbox" name="mundo" value="ciencia"><span>Ciência / lógica</span></label>
+      <label class="check"><input type="checkbox" name="mundo" value="cozinha"><span>Cozinha</span></label>
+      <label class="check"><input type="checkbox" name="mundo" value="familia"><span>Família / maternidade / paternidade</span></label>
+      <label>Um tema que você ama e poderia falar por horas <span class="opt">(opcional)</span></label>
+      <input type="text" name="tema_paixao">
+
+      <label>Quando esse problema aparece, o que você costuma fazer?</label>
+      <label class="radio"><input type="radio" name="padrao" value="automatico" required><span>Reajo no automático, e às vezes me arrependo depois</span></label>
+      <label class="radio"><input type="radio" name="padrao" value="oposto"><span>Faço o oposto do que fazia antes, mas parece forçado</span></label>
+      <label class="radio"><input type="radio" name="padrao" value="meio"><span>Tento achar o meio-termo; às vezes consigo, às vezes travo</span></label>
+      <label class="radio"><input type="radio" name="padrao" value="congelo"><span>Congelo, adio ou evito o assunto</span></label>
+
+      <label>Se isso se resolvesse de verdade, o que estaria diferente, em coisas concretas, daqui a 6 meses?</label>
+      <textarea name="seis_meses" style="min-height:70px" required></textarea>
+    </div>
+
+    <div class="bloco">
+      <h2>Cuidado</h2>
+      <label>Você está em acompanhamento psicológico ou psiquiátrico?</label>
+      <label class="radio"><input type="radio" name="acompanhamento" value="sim" required><span>Sim</span></label>
+      <label class="radio"><input type="radio" name="acompanhamento" value="nao"><span>Não</span></label>
+      <label class="radio"><input type="radio" name="acompanhamento" value="nao_dizer"><span>Prefiro não dizer</span></label>
+      <label>Existe algo delicado que você queira que eu saiba antes da sessão? <span class="opt">(opcional)</span></label>
+      <textarea name="delicado" style="min-height:60px"></textarea>
+      <div class="aviso">A Leitura é uma prática de autoconhecimento e não substitui cuidado médico ou psicológico. Se você está em sofrimento intenso ou com pensamentos de se machucar, o recurso certo agora é outro: no Brasil, o CVV atende 24h no <strong>188</strong> e em cvv.org.br. Você merece esse cuidado primeiro, e a Leitura te espera depois.</div>
+    </div>
+
+    <div class="bloco">
+      <h2>Logística</h2>
+      <label>Idioma da sessão</label>
+      <label class="radio"><input type="radio" name="idioma" value="pt" checked><span>Português</span></label>
+      <label class="radio"><input type="radio" name="idioma" value="en"><span>English</span></label>
+      <label>Posso gravar a sessão pra você receber a gravação depois?</label>
+      <label class="radio"><input type="radio" name="gravacao" value="sim" checked><span>Sim, pode gravar</span></label>
+      <label class="radio"><input type="radio" name="gravacao" value="nao"><span>Prefiro sem gravação</span></label>
+      <label>Como você chegou até o Jogo da Alma? <span class="opt">(opcional)</span></label>
+      <input type="text" name="origem_atribuicao">
+    </div>
+
+    <button type="submit" class="btn">Enviar minha preparação ✦</button>
+    <p class="hint" style="text-align:center;margin-top:10px">Suas respostas vão direto pra preparação da sua Leitura.</p>
+  </form>
+</div>
+
+<div id="ok">
+  <h2>✦ Recebido.</h2>
+  <p>Sua Leitura já está sendo preparada com base no que você escreveu.<br>Nos vemos na sessão, chega 5 minutos antes, num lugar tranquilo.</p>
+</div>
+
+</div>
+
+<script>
+// Prefill via URL (?nome=&email=)
+const q = new URLSearchParams(location.search);
+if(q.get('nome'))  document.getElementById('f-nome').value  = q.get('nome');
+if(q.get('email')) document.getElementById('f-email').value = q.get('email');
+
+// Barra de progresso
+const form = document.getElementById('ps-form');
+const req = () => form.querySelectorAll('[required]');
+function updateBar(){
+  const groups = new Set(); let filled = 0;
+  req().forEach(el=>{
+    const key = el.name; groups.add(key);
+  });
+  groups.forEach(name=>{
+    const els = form.querySelectorAll(`[name="${name}"]`);
+    const e0 = els[0];
+    if(e0.type==='radio'){ if([...els].some(r=>r.checked)) filled++; }
+    else if(e0.value.trim()) filled++;
+  });
+  document.getElementById('pbar').style.width = (filled/groups.size*100)+'%';
+}
+form.addEventListener('input', updateBar); updateBar();
+
+// Envio
+form.addEventListener('submit', async function(e){
+  e.preventDefault();
+  const fd = new FormData(form);
+  const multi = n => [...form.querySelectorAll(`[name="${n}"]:checked`)].map(x=>x.value);
+  const payload = {
+    tipo:'pre-sessao', ts:new Date().toISOString(),
+    nome:fd.get('nome'), email:fd.get('email'),
+    porta:fd.get('porta'), relato:fd.get('relato'),
+    resultado_perseguido:fd.get('resultado_perseguido'),
+    ja_tentou:multi('tentou'), ajudou_menos_ajudou:fd.get('ajudou'),
+    dor_hoje:fd.get('dor_hoje'),
+    radar0a10:{seguranca:+fd.get('r_seguranca'),prazer:+fd.get('r_prazer'),
+      vontade:+fd.get('r_vontade'),vinculos:+fd.get('r_vinculos'),
+      expressao:+fd.get('r_expressao'),clareza:+fd.get('r_clareza'),
+      sentido:+fd.get('r_sentido')},
+    idioma_nativo:multi('mundo'), tema_paixao:fd.get('tema_paixao'),
+    padrao_reacao:fd.get('padrao'), seis_meses:fd.get('seis_meses'),
+    acompanhamento:fd.get('acompanhamento'), delicado:fd.get('delicado'),
+    idioma_sessao:fd.get('idioma'), gravacao:fd.get('gravacao')==='sim',
+    origem_atribuicao:fd.get('origem_atribuicao')
+  };
+  const btn = form.querySelector('.btn'); btn.disabled = true; btn.textContent = 'Enviando…';
+  try{
+    await fetch('[URL_WEBHOOK_N8N]',{method:'POST',
+      headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+  }catch(err){}
+  document.getElementById('form-area').style.display='none';
+  document.getElementById('ok').style.display='block';
+  document.getElementById('pbar').style.width='100%';
+  window.scrollTo(0,0);
+});
+</script>
+</body>
+</html>

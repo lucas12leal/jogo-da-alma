@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Alma — Autoconhecimento e Transformação Pessoal</title>
+    <meta name="description" content="Descubra seu sistema operacional interno. O Jogo da Alma é uma metodologia de autoconhecimento baseada em 7 chakras que te ajuda a entender seus padrões, personalidade e como transformar sua vida.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-icon">&#10022;</span>
+                <span>Jogo da Alma</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#problema">O Problema</a>
+                <a href="#metodo">O Método</a>
+                <a href="#modulos">Módulos</a>
+                <a href="#chakras">7 Chakras</a>
+                <a href="#personalidades">7 Personalidades</a>
+                <a href="#como-funciona">Como Funciona</a>
+                <a href="questionario.html">Quiz Chakras</a>
+                <a href="questionario-personalidade.html">Quiz Personalidade</a>
+            </div>
+            <a href="#cta" class="nav-cta">Comece Agora</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-orb hero-orb-1"></div>
+            <div class="hero-orb hero-orb-2"></div>
+            <div class="hero-orb hero-orb-3"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge animate-in">Metodologia de Autoconhecimento</div>
+                <h1 class="hero-title animate-in">
+                    Você não está quebrado.<br>
+                    <span class="hero-highlight">Seu sistema está desatualizado.</span>
+                </h1>
+                <p class="hero-subtitle animate-in">
+                    O Jogo da Alma é uma metodologia que mapeia seu sistema operacional interno
+                    — os padrões inconscientes que governam seus pensamentos, emoções e ações —
+                    e te ensina a atualizá-lo.
+                </p>
+                <div class="hero-actions animate-in">
+                    <a href="#modulos" class="btn btn-primary">Conhecer os Módulos</a>
+                    <a href="#problema" class="btn btn-ghost">Entender o Problema</a>
+                </div>
+                <div class="hero-stats animate-in">
+                    <div class="stat">
+                        <span class="stat-number">7</span>
+                        <span class="stat-label">Chakras Mapeados</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-number">2</span>
+                        <span class="stat-label">Módulos Complementares</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-number">4</span>
+                        <span class="stat-label">Camadas de Transformação</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section section-dark" id="problema">
+        <div class="container">
+            <div class="section-header animate-in">
+                <span class="section-tag">A Raiz</span>
+                <h2 class="section-title">O maior problema do ser humano</h2>
+                <p class="section-subtitle">
+                    Não é o que você sente, pensa ou faz de "errado."
+                </p>
+            </div>
+
+            <div class="problem-grid">
+                <div class="problem-card problem-card-main animate-in">
+                    <div class="problem-icon">&#9881;</div>
+                    <h3>Sistema Operacional Desatualizado</h3>
+                    <p>
+                        Você roda um <strong>sistema operacional inconsciente</strong> que escolhe estratégias
+                        — pensamentos, emoções, ações — que já foram brilhantes no passado,
+                        mas que <strong>não servem mais</strong> para o contexto atual.
+                    </p>
+                </div>
+
+                <div class="problem-card animate-in">
+                    <div class="problem-number">01</div>
+                    <h4>Não é defeito</h4>
+                    <p>Todo comportamento negativo é uma estratégia inteligente. Não é fraqueza. É um programa que funcionou — mas expirou.</p>
+                </div>
+
+                <div class="problem-card animate-in">
+                    <div class="problem-number">02</div>
+                    <h4>Não é só interno</h4>
+                    <p>Nem todo resultado negativo vem só de dentro. O problema pode ser interno, externo, ou os dois. O Jogo da Alma mapeia ambos.</p>
+                </div>
+
+                <div class="problem-card animate-in">
+                    <div class="problem-number">03</div>
+                    <h4>Não cria dependência</h4>
+                    <p>O objetivo não é dar respostas para sempre. É te ensinar a entender como seu sistema funciona para que você se atualize sozinho.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Method Section -->
+    <section class="section" id="metodo">
+        <div class="container">
+            <div class="section-header animate-in">
+                <span class="section-tag">O Método</span>
+                <h2 class="section-title">As 4 camadas da transformação</h2>
+                <p class="section-subtitle">
+                    Cada camada representa um estágio. Você pode estar travado em qualquer uma delas.
+                </p>
+            </div>
+
+            <div class="layers-grid">
+                <div class="layer-card animate-in" data-layer="1">
+                    <div class="layer-number">Camada 1</div>
+                    <h3 class="layer-name">Não Saber</h3>
+                    <p class="layer-quote">"É assim que eu sou"</p>
+                    <p class="layer-desc">Não percebe o padrão interno. Vive no piloto automático sem enxergar o que está por trás.</p>
+                    <div class="layer-solution">
+                        <span class="layer-arrow">&#8594;</span>
+                        <span>Módulo 1 — O Espelho</span>
+                    </div>
+                </div>
+
+                <div class="layer-card animate-in" data-layer="2">
+                    <div class="layer-number">Camada 2</div>
+                    <h3 class="layer-name">Não Entender</h3>
+                    <p class="layer-quote">"Eu sei que faço, mas não sei por quê"</p>
+                    <p class="layer-desc">Percebe o padrão mas não entende a origem. Sabe o que faz de errado mas não sabe como parar.</p>
+                    <div class="layer-solution">
+                        <span class="layer-arrow">&#8594;</span>
+                        <span>Módulo 2 — A Fórmula</span>
+                    </div>
+                </div>
+
+                <div class="layer-card animate-in" data-layer="3">
+                    <div class="layer-number">Camada 3</div>
+                    <h3 class="layer-name">Não Conseguir</h3>
+                    <p class="layer-quote">"Eu entendo, mas não consigo parar"</p>
+                    <p class="layer-desc">Entende mas não consegue mudar. A mente antiga vence a mente nova no momento da ação.</p>
+                    <div class="layer-solution">
+                        <span class="layer-arrow">&#8594;</span>
+                        <span>Módulo 3 — O Protocolo</span>
+                    </div>
+                </div>
+
+                <div class="layer-card animate-in" data-layer="4">
+                    <div class="layer-number">Camada 4</div>
+                    <h3 class="layer-name">Não Agir no Mundo</h3>
+                    <p class="layer-quote">"Já me entendo, mas minha vida não muda"</p>
+                    <p class="layer-desc">Fez o trabalho interno mas o resultado concreto não muda. Faltam variáveis externas.</p>
+                    <div class="layer-solution">
+                        <span class="layer-arrow">&#8594;</span>
+                        <span>Módulo 4 — O Externo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modules Section -->
+    <section class="section section-dark" id="modulos">
+        <div class="container">
+            <div class="section-header animate-in">
+                <span class="section-tag">Os Módulos</span>
+                <h2 class="section-title">Duas lentes, uma visão completa</h2>
+                <p class="section-subtitle">
+                    O Jogo da Alma opera em dois módulos que, juntos, criam um mapa completo de quem você é
+                    e por que você funciona do jeito que funciona.
+                </p>
+            </div>
+
+            <!-- Module 1 -->
+            <div class="module-block animate-in" id="modulo1">
+                <div class="module-header">
+                    <div class="module-badge">Módulo 1</div>
+                    <h3 class="module-title">Autoconhecimento</h3>
+                    <p class="module-tagline">Veja o que seu sistema está fazendo — e aprenda a atualizá-lo</p>
+                </div>
+
+                <div class="module-content">
+                    <div class="module-text">
+                        <p>
+                            O primeiro módulo funciona como um <strong>espelho inteligente</strong>.
+                            Ele mapeia seus padrões internos através dos 7 chakras, identificando quais estão
+                            <em>bloqueados</em> (energia suprimida) ou <em>excessivos</em> (energia desregulada).
+                        </p>
+                        <p>
+                            A partir da sua situação, o sistema traça a cadeia completa:
+                            <strong>pensamento &#8594; emoção &#8594; ação &#8594; resultado</strong>.
+                        </p>
+                    </div>
+
+                    <div class="module-steps">
+                        <div class="module-step">
+                            <div class="step-icon">&#128065;</div>
+                            <div>
+                                <h4>O Espelho</h4>
+                                <p>O que está acontecendo com você — mapeamento dos chakras ativos e padrões negativos em ação</p>
+                            </div>
+                        </div>
+                        <div class="module-step">
+                            <div class="step-icon">&#128300;</div>
+                            <div>
+                                <h4>A Fórmula</h4>
+                                <p>Por que você funciona assim — a origem evolutiva e pessoal da estratégia inconsciente</p>
+                            </div>
+                        </div>
+                        <div class="module-step">
+                            <div class="step-icon">&#9889;</div>
+                            <div>
+                                <h4>O Protocolo</h4>
+                                <p>O que fazer quando o padrão ativar — dissociar, lembrar e praticar com as Duas Mentes</p>
+                            </div>
+                        </div>
+                        <div class="module-step">
+                            <div class="step-icon">&#127760;</div>
+                            <div>
+                                <h4>O Externo</h4>
+                                <p>O que está acontecendo fora de você — diagnóstico das variáveis do mundo que você não controla</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="module-philosophy">
+                    <blockquote>
+                        "Todo comportamento negativo é uma estratégia inteligente que está desatualizada — nunca um defeito ou fraqueza."
+                    </blockquote>
+                </div>
+            </div>
+
+            <!-- Module 2 -->
+            <div class="module-block animate-in" id="modulo2">
+                <div class="module-header">
+                    <div class="module-badge module-badge-alt">Módulo 2</div>
+                    <h3 class="module-title">Personalidade</h3>
+                    <p class="module-tagline">Descubra seu perfil vibracional — e alinhe sua vida com quem você já é</p>
+                </div>
+
+                <div class="module-content">
+                    <div class="module-text">
+                        <p>
+                            O segundo módulo revela sua <strong>personalidade vibracional</strong>.
+                            Cada pessoa tem entre 1 a 3 chakras dominantes que funcionam como um
+                            <em>amplificador de 3x</em> sobre tudo que aquele chakra representa:
+                            necessidades, forças, fraquezas e vieses.
+                        </p>
+                        <p>
+                            A maioria dos problemas recorrentes tem raiz num <strong>desalinhamento</strong>
+                            entre seus chakras dominantes e a sua vida atual.
+                            A solução não é mudar quem você é. É <strong>alinhar a vida com quem você já é</strong>.
+                        </p>
+                    </div>
+
+                    <div class="module-steps">
+                        <div class="module-step">
+                            <div class="step-icon">&#127919;</div>
+                            <div>
+                                <h4>Diagnóstico Vibracional</h4>
+                                <p>Identificar qual chakra gera a emoção e se está no positivo (expansão) ou negativo (contração)</p>
+                            </div>
+                        </div>
+                        <div class="module-step">
+                            <div class="step-icon">&#128269;</div>
+                            <div>
+                                <h4>Desalinhamento</h4>
+                                <p>Cruzar seus chakras com ambiente, autocobrança, relacionamentos e decisões em ação</p>
+                            </div>
+                        </div>
+                        <div class="module-step">
+                            <div class="step-icon">&#9878;</div>
+                            <div>
+                                <h4>A Régua Certa</h4>
+                                <p>Parar de se cobrar com a régua errada e calibrar expectativas para sua personalidade</p>
+                            </div>
+                        </div>
+                        <div class="module-step">
+                            <div class="step-icon">&#129517;</div>
+                            <div>
+                                <h4>Recalibração</h4>
+                                <p>Perguntas e próximos passos concretos para realinhar sua vida com seu perfil</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="module-philosophy">
+                    <blockquote>
+                        "O ser humano é vibracional, não racional. A lógica serve à vibração, não o contrário."
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7 Chakras Section -->
+    <section class="section" id="chakras">
+        <div class="container">
+            <div class="section-header animate-in">
+                <span class="section-tag">Os 7 Campos</span>
+                <h2 class="section-title">Os 7 chakras do sistema</h2>
+                <p class="section-subtitle">
+                    Cada chakra governa um campo específico da experiência humana.
+                    Entender seu estado — bloqueado, equilibrado ou excessivo — é o primeiro passo.
+                </p>
+            </div>
+
+            <div class="chakras-grid">
+                <a href="artigos/chakra-basico.html" class="chakra-card animate-in chakra-card-link" data-chakra="basico">
+                    <div class="chakra-dot" style="--chakra-color: #EF4444"></div>
+                    <div class="chakra-info">
+                        <h4>Básico</h4>
+                        <p class="chakra-theme">Segurança e Estabilidade</p>
+                        <p class="chakra-personality">Conservador / Familiar</p>
+                    </div>
+                    <div class="chakra-details">
+                        <div class="chakra-detail-row">
+                            <span class="detail-label">Bloqueado</span>
+                            <span>"Não adianta tentar" — medo paralisante</span>
+                        </div>
+                        <div class="chakra-detail-row">
+                            <span class="detail-label excess">Excessivo</span>
+                            <span>"Preciso controlar tudo" — rigidez extrema</span>
+                        </div>
+                        <div class="chakra-detail-row">
+                            <span class="detail-label balanced">Capacidades</span>
+                            <span>Estabilidade, pragmatismo, persistência</span>
+                        </div>
+                    </div>
+                    <div class="chakra-read-more">Ler artigo completo &#8594;</div>
+                </a>
+
+                <a href="artigos/chakra-sacral.html" class="chakra-card animate-in chakra-card-link" data-chakra="sacral">
+                    <div class="chakra-dot" style="--chakra-color: #F97316"></div>
+                    <div class="chakra-info">
+                        <h4>Sacral</h4>
+                        <p class="chakra-theme">Prazer e Criatividade</p>
+                        <p class="chakra-personality">Criativo / Social</p>
+                    </div>
+                    <div class="chakra-details">
+                        <div class="chakra-detail-row"><span class="detail-label">Bloqueado</span><span>"Prazer é fraqueza" — emoções suprimidas</span></div>
+                        <div class="chakra-detail-row"><span class="detail-label excess">Excessivo</span><span>"Preciso de intensidade" — instabilidade</span></div>
+                        <div class="chakra-detail-row"><span class="detail-label balanced">Capacidades</span><span>Sensibilidade, fluidez, criatividade</span></div>
+                    </div>
+                    <div class="chakra-read-more">Ler artigo completo &#8594;</div>
+                </a>
+
+                <a href="artigos/chakra-plexo-solar.html" class="chakra-card animate-in chakra-card-link" data-chakra="plexo">
+                    <div class="chakra-dot" style="--chakra-color: #EAB308"></div>
+                    <div class="chakra-info">
+                        <h4>Plexo Solar</h4>
+                        <p class="chakra-theme">Poder e Identidade</p>
+                        <p class="chakra-personality">Ambicioso / Confiante</p>
+                    </div>
+                    <div class="chakra-details">
+                        <div class="chakra-detail-row"><span class="detail-label">Bloqueado</span><span>"Não sou bom o suficiente" — insegurança</span></div>
+                        <div class="chakra-detail-row"><span class="detail-label excess">Excessivo</span><span>"Sou melhor que os outros" — arrogância</span></div>
+                        <div class="chakra-detail-row"><span class="detail-label balanced">Capacidades</span><span>Autoestima, coragem, determinação</span></div>
+                    </div>
+                    <div class="chakra-read-more">Ler artigo completo &#8594;</div>
+                </a>
+
+                <a href="artigos/chakra-cardiaco.html" class="chakra-card animate-in chakra-card-link" data-chakra="cardiaco">
+                    <div class="chakra-dot" style="--chakra-color: #22C55E"></div>
+                    <div class="chakra-info">
+                        <h4>Cardíaco</h4>
+                        <p class="chakra-theme">Amor e Conexão</p>
+                        <p class="chakra-personality">Empático / Amigável</p>
+                    </div>
+                    <div class="chakra-details">
+                        <div class="chakra-detail-row"><span class="detail-label">Bloqueado</span><span>"Não mereço ser amado" — coração fechado</span></div>
+                        <div class="chakra-detail-row"><span class="detail-label excess">Excessivo</span><span>"Amor é sacrifício total" — autoanulação</span></div>
+                        <div class="chakra-detail-row"><span class="detail-label balanced">Capacidades</span><span>Empatia, compaixão, amor próprio</span></div>
+                    </div>
+                    <div class="chakra-read-more">Ler artigo completo &#8594;</div>
+                </a>
+
+                <a href="artigos/chakra-laringeo.html" class="chakra-card animate-in chakra-card-link" data-chakra="laringeo">
+                    <div class="chakra-dot" style="--chakra-color: #3B82F6"></div>
+                    <div class="chakra-info">
+                        <h4>Laríngeo</h4>
+                        <p class="chakra-theme">Expressão e Verdade</p>
+                        <p class="chakra-personality">Expressivo / Comunicativo</p>
+                    </div>
+                    <div class="chakra-details">
+                        <div class="chakra-detail-row"><span class="detail-label">Bloqueado</span><span>"Se eu falar, vão me julgar" — silêncio</span></div>
+                        <div class="chakra-detail-row"><span class="detail-label excess">Excessivo</span><span>"Eu sei o que é melhor" — não ouve</span></div>
+                        <div class="chakra-detail-row"><span class="detail-label balanced">Capacidades</span><span>Autenticidade, clareza, coragem expressiva</span></div>
+                    </div>
+                    <div class="chakra-read-more">Ler artigo completo &#8594;</div>
+                </a>
+
+                <a href="artigos/chakra-frontal.html" class="chakra-card animate-in chakra-card-link" data-chakra="frontal">
+                    <div class="chakra-dot" style="--chakra-color: #8B5CF6"></div>
+                    <div class="chakra-info">
+                        <h4>Frontal</h4>
+                        <p class="chakra-theme">Clareza e Visão</p>
+                        <p class="chakra-personality">Intelectual / Curioso</p>
+                    </div>
+                    <div class="chakra-details">
+                        <div class="chakra-detail-row"><span class="detail-label">Bloqueado</span><span>"Não consigo entender" — confusão mental</span></div>
+                        <div class="chakra-detail-row"><span class="detail-label excess">Excessivo</span><span>"Preciso entender tudo" — paralisia</span></div>
+                        <div class="chakra-detail-row"><span class="detail-label balanced">Capacidades</span><span>Intuição, pensamento crítico, lucidez</span></div>
+                    </div>
+                    <div class="chakra-read-more">Ler artigo completo &#8594;</div>
+                </a>
+
+                <a href="artigos/chakra-coronario.html" class="chakra-card animate-in chakra-card-link" data-chakra="coronario">
+                    <div class="chakra-dot" style="--chakra-color: #A855F7"></div>
+                    <div class="chakra-info">
+                        <h4>Coronário</h4>
+                        <p class="chakra-theme">Propósito e Consciência</p>
+                        <p class="chakra-personality">Espiritualista / Intuitivo</p>
+                    </div>
+                    <div class="chakra-details">
+                        <div class="chakra-detail-row"><span class="detail-label">Bloqueado</span><span>"A vida não tem sentido" — vazio</span></div>
+                        <div class="chakra-detail-row"><span class="detail-label excess">Excessivo</span><span>"Estou mais evoluído" — fuga espiritual</span></div>
+                        <div class="chakra-detail-row"><span class="detail-label balanced">Capacidades</span><span>Fé, presença, aceitação, desapego</span></div>
+                    </div>
+                    <div class="chakra-read-more">Ler artigo completo &#8594;</div>
+                </a>
+            </div>
+
+            <div class="quiz-cta-banner animate-in">
+                <div class="quiz-cta-icon">🪷</div>
+                <h3>Descubra seu Mapa Energético</h3>
+                <p>Responda o questionário e identifique quais chakras precisam de atenção na sua vida real — leva apenas alguns minutos.</p>
+                <a href="questionario.html" class="btn btn-primary">Fazer o Questionário</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section section-dark" id="como-funciona">
+        <div class="container">
+            <div class="section-header animate-in">
+                <span class="section-tag">Na Prática</span>
+                <h2 class="section-title">Como o Jogo da Alma funciona</h2>
+                <p class="section-subtitle">
+                    O método opera em duas frentes simultâneas: o mundo interno e o mundo externo.
+                </p>
+            </div>
+
+            <div class="how-grid">
+                <div class="how-card animate-in">
+                    <div class="how-number">1</div>
+                    <h4>Descreva sua situação</h4>
+                    <p>Conte o que está te incomodando, causando dor ou te travando. Quanto mais detalhes — o que aconteceu, o que sentiu, como agiu — mais precisa a análise.</p>
+                </div>
+                <div class="how-card animate-in">
+                    <div class="how-number">2</div>
+                    <h4>Receba o mapeamento</h4>
+                    <p>O sistema identifica seus chakras ativos, se estão bloqueados ou em excesso, e traça a cadeia pensamento-emoção-ação-resultado.</p>
+                </div>
+                <div class="how-card animate-in">
+                    <div class="how-number">3</div>
+                    <h4>Entenda a origem</h4>
+                    <p>Descubra por que seu sistema escolheu essa estratégia — da espécie e da sua história pessoal — e veja a intenção positiva por trás.</p>
+                </div>
+                <div class="how-card animate-in">
+                    <div class="how-number">4</div>
+                    <h4>Receba o protocolo</h4>
+                    <p>Aprenda a dissociar do padrão, lembrar a versão atualizada e praticar a mudança com ações concretas e específicas para o seu caso.</p>
+                </div>
+            </div>
+
+            <!-- Two Minds Model -->
+            <div class="two-minds animate-in">
+                <h3>O Modelo das Duas Mentes</h3>
+                <div class="minds-grid">
+                    <div class="mind-card mind-old">
+                        <div class="mind-label">Mente Antiga</div>
+                        <p>Inconsciente, automática, rápida. Roda a estratégia desatualizada. Age antes de você perceber.</p>
+                    </div>
+                    <div class="mind-vs">VS</div>
+                    <div class="mind-card mind-new">
+                        <div class="mind-label">Mente Nova</div>
+                        <p>Consciente, deliberada, mais lenta. Pode escolher uma resposta diferente. Ganha com prática.</p>
+                    </div>
+                </div>
+                <p class="minds-footer">O protocolo ensina como a Mente Nova vence no momento real — não na teoria.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personality Types Section -->
+    <section class="section" id="personalidades">
+        <div class="container">
+            <div class="section-header animate-in">
+                <span class="section-tag">Personalidades</span>
+                <h2 class="section-title">7 perfis, 1 único você</h2>
+                <p class="section-subtitle">
+                    Seus 1 a 3 chakras dominantes amplificam em 3x tudo que representam.
+                    Entender seu perfil é parar de se cobrar com a régua errada.
+                </p>
+            </div>
+
+            <div class="personalities-grid">
+                <a href="artigos/personalidade-basico.html" class="personality-card personality-card-link animate-in" style="--p-color: #EF4444">
+                    <div class="p-emoji">&#128308;</div>
+                    <h4>Conservador</h4>
+                    <p class="p-need">Segurança e previsibilidade</p>
+                    <p class="p-strength">Lealdade, consistência, estabilidade</p>
+                    <p class="p-shadow">Medo de mudança, rigidez, acomodação</p>
+                    <div class="p-read-more">Ler perfil completo &#8594;</div>
+                </a>
+
+                <a href="artigos/personalidade-sacral.html" class="personality-card personality-card-link animate-in" style="--p-color: #F97316">
+                    <div class="p-emoji">&#128992;</div>
+                    <h4>Criativo</h4>
+                    <p class="p-need">Variedade e expressão criativa</p>
+                    <p class="p-strength">Dinamismo, adaptabilidade, paixão</p>
+                    <p class="p-shadow">Instabilidade, abandona projetos, impulsividade</p>
+                    <div class="p-read-more">Ler perfil completo &#8594;</div>
+                </a>
+
+                <a href="artigos/personalidade-plexo-solar.html" class="personality-card personality-card-link animate-in" style="--p-color: #EAB308">
+                    <div class="p-emoji">&#9728;&#65039;</div>
+                    <h4>Ambicioso</h4>
+                    <p class="p-need">Sucesso, destaque, conquista</p>
+                    <p class="p-strength">Foco, determinação, liderança</p>
+                    <p class="p-shadow">Arrogância, frieza, competitividade destrutiva</p>
+                    <div class="p-read-more">Ler perfil completo &#8594;</div>
+                </a>
+
+                <a href="artigos/personalidade-cardiaco.html" class="personality-card personality-card-link animate-in" style="--p-color: #22C55E">
+                    <div class="p-emoji">&#128154;</div>
+                    <h4>Empático</h4>
+                    <p class="p-need">Conexão emocional e ser útil</p>
+                    <p class="p-strength">Compaixão, acolhimento, trabalho em equipe</p>
+                    <p class="p-shadow">Dependência, autoanulação, sobrecarga</p>
+                    <div class="p-read-more">Ler perfil completo &#8594;</div>
+                </a>
+
+                <a href="artigos/personalidade-laringeo.html" class="personality-card personality-card-link animate-in" style="--p-color: #3B82F6">
+                    <div class="p-emoji">&#128309;</div>
+                    <h4>Expressivo</h4>
+                    <p class="p-need">Influência e ser ouvido</p>
+                    <p class="p-strength">Comunicação poderosa, carisma, liderança</p>
+                    <p class="p-shadow">Autoritarismo, não ouve, discussões</p>
+                    <div class="p-read-more">Ler perfil completo &#8594;</div>
+                </a>
+
+                <a href="artigos/personalidade-frontal.html" class="personality-card personality-card-link animate-in" style="--p-color: #8B5CF6">
+                    <div class="p-emoji">&#128065;&#65039;</div>
+                    <h4>Intelectual</h4>
+                    <p class="p-need">Aprendizado e desafio mental</p>
+                    <p class="p-strength">Visão fora da caixa, capacidade analítica</p>
+                    <p class="p-shadow">Frieza emocional, paralisia por análise</p>
+                    <div class="p-read-more">Ler perfil completo &#8594;</div>
+                </a>
+
+                <a href="artigos/personalidade-coronario.html" class="personality-card personality-card-link animate-in" style="--p-color: #A855F7">
+                    <div class="p-emoji">&#128081;</div>
+                    <h4>Espiritualista</h4>
+                    <p class="p-need">Transcendência e propósito</p>
+                    <p class="p-strength">Sabedoria, paz interior, visão ampla</p>
+                    <p class="p-shadow">Desconexão da realidade, anti-social, fuga</p>
+                    <div class="p-read-more">Ler perfil completo &#8594;</div>
+                </a>
+            </div>
+
+            <div class="quiz-cta-banner animate-in">
+                <div class="quiz-cta-icon">&#10022;</div>
+                <h3>Qual é a sua Personalidade Dominante?</h3>
+                <p>Responda 5 perguntas e descubra qual dos 7 arquétipos mais combina com você — leva apenas alguns minutos.</p>
+                <a href="questionario-personalidade.html" class="btn btn-primary">Fazer o Questionário</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section section-cta" id="cta">
+        <div class="container">
+            <div class="cta-content animate-in">
+                <div class="cta-icon">&#10022;</div>
+                <h2>Pronto para se ver de verdade?</h2>
+                <p>
+                    O Jogo da Alma não promete cura instantânea ou respostas mágicas.
+                    Ele te mostra quem você é, por que funciona assim,
+                    e o que fazer diferente — com clareza, respeito e direção prática.
+                </p>
+                <div class="cta-features">
+                    <div class="cta-feature">
+                        <span>&#10003;</span>
+                        Sem julgamento
+                    </div>
+                    <div class="cta-feature">
+                        <span>&#10003;</span>
+                        Sem jargão espiritual vazio
+                    </div>
+                    <div class="cta-feature">
+                        <span>&#10003;</span>
+                        Ações concretas e específicas
+                    </div>
+                    <div class="cta-feature">
+                        <span>&#10003;</span>
+                        Autonomia, não dependência
+                    </div>
+                </div>
+                <a href="#" class="btn btn-primary btn-lg" id="ctaMainBtn">Começar Minha Jornada</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">&#10022;</span>
+                    <span>Jogo da Alma</span>
+                </div>
+                <p class="footer-text">
+                    Autoconhecimento e transformação pessoal baseados em 7 chakras.
+                    <br>Não substitui acompanhamento profissional.
+                </p>
+                <p class="footer-copy">&copy; 2026 Jogo da Alma. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

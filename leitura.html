@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="theme-color" content="#0B0F1A">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leitura GPS da Alma, Jogo da Alma</title>
+<meta name="description" content="Em 90 minutos, veja num mapa onde exatamente a sua energia está travada, e saia com o único movimento que reorganiza o resto.">
+<!-- SUBSTITUIR ANTES DE PUBLICAR:
+     https://buy.stripe.com/dRmeVfgvgeyXfl3gZ21oI01   = Stripe Payment Link da Leitura (€150)
+     [LINK_AGENDA]   = Cal.com/Calendly (se o Stripe não redirecionar direto)
+     [FOTO_LUCAS]    = url da foto
+     [IMG_RADAR]     = screenshot real do radar da ferramenta
+     Pixel do Meta: colar no fim do <head>. -->
+<style>
+  :root{
+    --bg:#0B0F1A; --bg2:#111827; --card:#151C2C; --border:#232B3E;
+    --text:#E5E7EB; --muted:#9CA3AF;
+    --violet:#8B5CF6; --violet2:#A855F7; --gold:#EAB308; --green:#22C55E; --red:#EF4444;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.7}
+  .wrap{max-width:760px;margin:0 auto;padding:0 22px}
+  section{padding:56px 0}
+  h1{font-size:clamp(1.7rem,4.5vw,2.6rem);line-height:1.25;margin:18px 0}
+  h2{font-size:clamp(1.3rem,3vw,1.7rem);margin-bottom:18px;color:#fff}
+  p{margin-bottom:16px;color:var(--text)}
+  .muted{color:var(--muted)}
+  .pre{color:var(--violet2);text-transform:uppercase;letter-spacing:.12em;font-size:.8rem;font-weight:600}
+  .sub{font-size:1.1rem;color:var(--muted)}
+  .cta{display:inline-block;background:linear-gradient(135deg,var(--violet),var(--violet2));color:#fff;
+       padding:16px 34px;border-radius:12px;font-weight:700;font-size:1.05rem;text-decoration:none;
+       box-shadow:0 8px 30px rgba(139,92,246,0.35);transition:transform .15s}
+  .cta:hover{transform:translateY(-2px)}
+  .cta-note{display:block;margin-top:10px;font-size:.85rem;color:var(--muted)}
+  .hero{padding:80px 0 64px;text-align:center;background:
+        radial-gradient(ellipse at 50% -20%,rgba(139,92,246,0.25),transparent 60%),var(--bg)}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:18px}
+  .card h3{color:var(--violet2);margin-bottom:8px;font-size:1.1rem}
+  .num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;
+       background:rgba(139,92,246,0.18);color:var(--violet2);font-weight:700;margin-right:10px;flex-shrink:0}
+  .step{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px}
+  ul.list{list-style:none;margin:0 0 16px}
+  ul.list li{padding-left:28px;position:relative;margin-bottom:10px}
+  ul.list li.yes::before{content:"✦";color:var(--green);position:absolute;left:4px}
+  ul.list li.no::before{content:"✕";color:var(--red);position:absolute;left:6px}
+  .price-box{background:linear-gradient(160deg,var(--card),#1A1330);border:1px solid var(--violet);
+             border-radius:18px;padding:36px;text-align:center}
+  .price-old{text-decoration:line-through;color:var(--muted);font-size:1.2rem}
+  .price-new{font-size:2.6rem;font-weight:800;color:#fff;margin:6px 0}
+  .guarantee{border-left:3px solid var(--gold);padding:18px 22px;background:rgba(234,179,8,0.06);border-radius:0 12px 12px 0;margin-top:26px}
+  details{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 22px;margin-bottom:12px}
+  summary{cursor:pointer;font-weight:600;color:#fff}
+  details p{margin-top:12px;color:var(--muted)}
+  .center{text-align:center}
+  .img-ph{background:var(--bg2);border:1px dashed var(--border);border-radius:14px;padding:60px 20px;
+          text-align:center;color:var(--muted);margin:20px 0}
+  footer{padding:36px 0;border-top:1px solid var(--border);text-align:center;color:var(--muted);font-size:.85rem}
+  @media(max-width:600px){section{padding:40px 0}.hero{padding:56px 0 44px}}
+
+  /* mobile/UX upgrade */
+  html{scroll-behavior:smooth}
+  .cta:active{transform:scale(.98)}
+  a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--violet2);outline-offset:2px}
+  .sticky-cta{position:fixed;bottom:0;left:0;right:0;z-index:99;display:none;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(11,15,26,0.94);backdrop-filter:blur(8px);border-top:1px solid var(--border)}
+  .sticky-cta a{display:block;text-align:center;background:linear-gradient(135deg,var(--violet),var(--violet2));color:#fff;padding:15px;border-radius:12px;font-weight:700;text-decoration:none;font-size:1rem}
+  @media(max-width:600px){
+    .sticky-cta{display:block}
+    body{padding-bottom:80px}
+    .hero .cta,.price-box .cta,.center .cta{display:block;text-align:center}
+    .card{padding:20px 16px}
+    .price-box{padding:28px 18px}
+    .img-ph{padding:40px 14px}
+    h1{font-size:1.5rem}
+    .sub{font-size:1rem}
+    details{padding:16px 16px}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap">
+    <span class="pre">Para quem já leu os livros, fez as terapias, e o padrão continua voltando</span>
+    <h1>Em 90 minutos, você vai <em>ver num mapa</em> onde exatamente a sua energia está travada, e sair com o único movimento que reorganiza o resto.</h1>
+    <p class="sub">Não é terapia, não é tarô, e ninguém aqui vai te dar conselho. É um diagnóstico geométrico dos seus 7 centros, onde quem reconhece a resposta é você.</p>
+    <a class="cta" href="https://buy.stripe.com/dRmeVfgvgeyXfl3gZ21oI01">Quero minha Leitura → €150</a>
+    <span class="cta-note">Valor de tabela €250 · condição de lançamento · 20 vagas</span>
+  </div>
+</div>
+
+<!-- PROBLEMA -->
+<section>
+  <div class="wrap">
+    <h2>Você não precisa de mais conteúdo. Você precisa de um endereço.</h2>
+    <p>Se você está aqui, provavelmente já tentou de tudo um pouco: os livros de manifestação e chakras, a terapia, a constelação, talvez um retiro. E já teve <strong>aquele insight</strong> que parecia que ia mudar tudo, e três semanas depois o padrão estava lá de novo.</p>
+    <p>O problema não é falta de esforço. Nem de conhecimento.</p>
+    <p><strong>O problema é que você está tentando resolver sem saber o endereço.</strong> A sua estagnação na carreira, por exemplo, pode ser <span style="color:var(--violet2)">laríngeo</span> (você não diz o que quer), <span style="color:var(--gold)">plexo</span> (você não sustenta o conflito que a mudança exige) ou <span style="color:var(--green)">umbilical</span> (você não se deu o direito de prosperar). Três problemas diferentes. Três soluções diferentes.</p>
+    <p class="muted">E a maioria das pessoas passa anos tratando o centro errado.</p>
+  </div>
+</section>
+
+<!-- MECANISMO -->
+<section style="background:var(--bg2)">
+  <div class="wrap">
+    <h2>O que acontece numa Leitura GPS da Alma</h2>
+    <div class="card">
+      <h3>1 · Você recebe MAPAS, não veredito</h3>
+      <p class="muted">Eu não vou te dizer "seu problema é X". Vou te mostrar 2-3 leituras possíveis da sua situação, por portas diferentes, e perguntar: <em>qual dessas desce em você?</em> A resposta certa chega com reconhecimento físico. Nós chamamos isso de ressonância. A autoridade final da sessão não sou eu, não é a IA, é você.</p>
+    </div>
+    <div class="card">
+      <h3>2 · Você VÊ o seu radar</h3>
+      <p class="muted">Na tela, geramos juntos o gráfico dos seus 7 centros: a <span style="color:var(--gold)">linha dourada</span> (o que a sua situação pede) sobre a <span style="color:var(--green)">área verde</span> (o que você tem trazido). O vão entre as duas é o seu travamento, visível e nomeável. Chega de "sinto que tem algo errado": você vai apontar para o lugar.</p>
+      <div style="text-align:center;margin:20px 0">
+<svg viewBox="0 0 420 400" xmlns="http://www.w3.org/2000/svg" style="max-width:420px;width:100%;height:auto" role="img" aria-label="Exemplo ilustrativo. Na sessão, o radar é gerado com os SEUS dados: linha dourada = o que a situação pede; área verde = o que você tem trazido.">
+<rect width="420" height="400" fill="none"/>
+<polygon points="210.0,157.5 235.4,169.7 241.7,197.2 224.1,219.3 195.9,219.3 178.3,197.2 184.6,169.7" fill="none" stroke="#232B3E" stroke-width="1"/><polygon points="210.0,125.0 260.8,149.5 273.4,204.5 238.2,248.6 181.8,248.6 146.6,204.5 159.2,149.5" fill="none" stroke="#232B3E" stroke-width="1"/><polygon points="210.0,92.5 286.2,129.2 305.1,211.7 252.3,277.8 167.7,277.8 114.9,211.7 133.8,129.2" fill="none" stroke="#232B3E" stroke-width="1"/><polygon points="210.0,60.0 311.6,108.9 336.7,218.9 266.4,307.1 153.6,307.1 83.3,218.9 108.4,108.9" fill="none" stroke="#232B3E" stroke-width="1"/><line x1="210" y1="190" x2="210.0" y2="60.0" stroke="#232B3E" stroke-width="1"/><line x1="210" y1="190" x2="311.6" y2="108.9" stroke="#232B3E" stroke-width="1"/><line x1="210" y1="190" x2="336.7" y2="218.9" stroke="#232B3E" stroke-width="1"/><line x1="210" y1="190" x2="266.4" y2="307.1" stroke="#232B3E" stroke-width="1"/><line x1="210" y1="190" x2="153.6" y2="307.1" stroke="#232B3E" stroke-width="1"/><line x1="210" y1="190" x2="83.3" y2="218.9" stroke="#232B3E" stroke-width="1"/><line x1="210" y1="190" x2="108.4" y2="108.9" stroke="#232B3E" stroke-width="1"/>
+<polygon points="210.0,138.0 281.1,133.3 273.4,204.5 255.1,283.7 193.1,225.1 134.0,207.4 159.2,149.5" fill="rgba(34,197,94,0.22)" stroke="#22C55E" stroke-width="2"/>
+<polygon points="210.0,86.0 271.0,141.4 298.7,210.2 238.2,248.6 164.9,283.7 134.0,207.4 138.9,133.3" fill="none" stroke="#EAB308" stroke-width="2.5" stroke-dasharray="none"/>
+<circle cx="210.0" cy="86.0" r="3.5" fill="#EAB308"/><circle cx="271.0" cy="141.4" r="3.5" fill="#EAB308"/><circle cx="298.7" cy="210.2" r="3.5" fill="#EAB308"/><circle cx="238.2" cy="248.6" r="3.5" fill="#EAB308"/><circle cx="164.9" cy="283.7" r="3.5" fill="#EAB308"/><circle cx="134.0" cy="207.4" r="3.5" fill="#EAB308"/><circle cx="138.9" cy="133.3" r="3.5" fill="#EAB308"/><text x="210.0" y="31.4" fill="#9CA3AF" font-size="13" text-anchor="middle" dominant-baseline="middle">Sentido</text><text x="334.0" y="91.1" fill="#9CA3AF" font-size="13" text-anchor="start" dominant-baseline="middle">Segurança</text><text x="364.6" y="225.3" fill="#9CA3AF" font-size="13" text-anchor="start" dominant-baseline="middle">Prazer</text><text x="278.8" y="332.9" fill="#9CA3AF" font-size="13" text-anchor="start" dominant-baseline="middle">Vontade</text><text x="141.2" y="332.9" fill="#9CA3AF" font-size="13" text-anchor="end" dominant-baseline="middle">Coração</text><text x="55.4" y="225.3" fill="#9CA3AF" font-size="13" text-anchor="end" dominant-baseline="middle">Expressão</text><text x="86.0" y="91.1" fill="#9CA3AF" font-size="13" text-anchor="end" dominant-baseline="middle">Visão</text>
+</svg>
+<p style="color:#9CA3AF;font-size:.82rem;margin-top:6px">Exemplo ilustrativo. Na sessão, o radar é gerado com os SEUS dados: linha dourada = o que a situação pede; área verde = o que você tem trazido.</p>
+</div>
+    </div>
+    <div class="card">
+      <h3>3 · Você sai com UM movimento, não com doze</h3>
+      <p class="muted">Todo sistema tem um vértice-chave: o menor movimento que reorganiza o resto. Ele vai traduzido para o SEU idioma, se o seu mundo é treino, vira treino; se é negócio, vira negócio. Prática de 7 dias: concreta e verificável.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section>
+  <div class="wrap">
+    <h2>Como funciona, na prática</h2>
+    <div class="step"><span class="num">1</span><p>Você agenda e paga, online, ao vivo, 90 minutos.</p></div>
+    <div class="step"><span class="num">2</span><p>48h antes, recebe um questionário de 10 minutos que alimenta a preparação da sua leitura. Você não gasta metade da sessão "se explicando".</p></div>
+    <div class="step"><span class="num">3</span><p>A sessão: sua situação → os mapas → sua escolha por ressonância → o radar → o vértice-chave → sua prática de 7 dias.</p></div>
+    <div class="step"><span class="num">4</span><p>Em até 24h, você recebe o <strong>Mapa da Sua Leitura</strong> em PDF, pra não depender de memória.</p></div>
+    <div class="step"><span class="num">5</span><p>No dia 7, eu te mando uma mensagem pra saber do movimento. Você não sai da sessão pro vácuo.</p></div>
+  </div>
+</section>
+
+<!-- PARA QUEM -->
+<section style="background:var(--bg2)">
+  <div class="wrap">
+    <h2>Isto é para você se…</h2>
+    <ul class="list">
+      <li class="yes">Você já tem repertório de autoconhecimento, mas sente que falta o mapa que junta as peças;</li>
+      <li class="yes">Quer um diagnóstico estruturado, não mais uma conversa agradável;</li>
+      <li class="yes">Prefere <strong>ver</strong> com clareza a receber resposta pronta;</li>
+      <li class="yes">Está em transição (carreira, relação, país, identidade) e precisa saber qual movimento vem primeiro.</li>
+    </ul>
+    <h2 style="margin-top:34px">E NÃO é para você se…</h2>
+    <ul class="list">
+      <li class="no">Você procura tratamento de saúde mental, a Leitura é autoconhecimento e <strong>não substitui médico nem psicólogo</strong>;</li>
+      <li class="no">Quer alguém que decida por você, o método faz o contrário;</li>
+      <li class="no">Quer promessa mágica. Eu prometo clareza e um movimento. O movimento, quem faz é você.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- QUEM CONDUZ -->
+<section>
+  <div class="wrap">
+    <h2>Quem conduz</h2>
+    <div class="img-ph" style="max-width:180px;border-radius:50%">[FOTO_LUCAS]</div>
+    <p>Sou <strong>Lucas Leal</strong>. Trabalho com tecnologia e IA, e fui a primeira pessoa a ser mapeada pelo Jogo da Alma, antes de me tornar o primeiro facilitador do método. O Jogo da Alma foi desenvolvido por <strong>Rafael Pirondi</strong> e consolidado numa base com mais de 50 conceitos estruturados. Cada leitura é assistida por essa base através de uma ferramenta de IA construída sobre o método: você recebe a precisão de um sistema com a presença de uma conversa humana de verdade.</p>
+    <!-- DEPOIMENTOS: inserir aqui os vídeos/prints das leituras beta -->
+  </div>
+</section>
+
+<!-- PREÇO -->
+<section style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="price-box">
+      <p class="pre">Leitura GPS da Alma · 90 minutos · ao vivo · online</p>
+      <p class="price-old">€250</p>
+      <p class="price-new">€150</p>
+      <p class="muted">Lançamento, 20 primeiras vagas<br>Preparação personalizada + sessão de 90min + Mapa da Leitura em PDF + acompanhamento no dia 7</p>
+      <a class="cta" href="https://buy.stripe.com/dRmeVfgvgeyXfl3gZ21oI01" style="margin-top:16px">Agendar minha Leitura</a>
+    </div>
+    <div class="guarantee">
+      <strong style="color:var(--gold)">Garantia sem letra miúda:</strong> se ao final da sessão você não tiver clareza de onde está o seu travamento, você me diz, e eu devolvo 100% na hora. A sessão só vale se você sair enxergando.
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="wrap">
+    <h2>Perguntas frequentes</h2>
+    <details><summary>Preciso acreditar em chakras / energia?</summary><p>Não. Os 7 centros funcionam como um mapa de 7 dimensões da experiência humana (segurança, prazer, vontade, vínculo, expressão, visão, sentido). Se preferir tratar como modelo psicológico, funciona exatamente igual. O mapa não pede fé, pede honestidade.</p></details>
+    <details><summary>É terapia?</summary><p>Não. É diagnóstico e navegação. Muita gente faz a Leitura em paralelo à terapia, e leva o mapa pro terapeuta. Se aparecer algo que pede cuidado clínico, eu te digo com respeito e clareza.</p></details>
+    <details><summary>É religioso?</summary><p>Não. O método não tem doutrina, não pede prática religiosa e não conflita com a sua fé (ou a ausência dela).</p></details>
+    <details><summary>E se nenhum mapa ressoar?</summary><p>Abrimos outros, a situação tem mais portas que as 3 primeiras. Se mesmo assim não houver reconhecimento, vale a garantia: seu dinheiro de volta.</p></details>
+    <details><summary>Por que tem IA no processo?</summary><p>A IA organiza os mapas possíveis a partir da base do método, ela não decide nada sobre você. No Jogo da Alma isso é regra constitucional: a ferramenta oferece hipóteses, a sua ressonância escolhe, a sua experiência valida.</p></details>
+    <details><summary>Online funciona?</summary><p>A Leitura foi desenhada online: você precisa ver a tela (mapas e radar são visuais). Zoom ou Meet, com gravação se você quiser.</p></details>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="center" style="background:radial-gradient(ellipse at 50% 120%,rgba(139,92,246,0.25),transparent 60%),var(--bg2)">
+  <div class="wrap">
+    <h2>O padrão que te trouxe até aqui não vai se resolver com mais um insight.<br>Vai se resolver com um endereço e um movimento.</h2>
+    <a class="cta" href="https://buy.stripe.com/dRmeVfgvgeyXfl3gZ21oI01">Quero minha Leitura, €150</a>
+    <span class="cta-note">20 vagas de lançamento</span>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Jogo da Alma · Autoconhecimento e transformação pessoal · Não substitui acompanhamento profissional de saúde</div>
+</footer>
+
+<div class="sticky-cta"><a href="https://buy.stripe.com/dRmeVfgvgeyXfl3gZ21oI01">Quero minha Leitura, €150</a></div>
+</body>
+</html>
