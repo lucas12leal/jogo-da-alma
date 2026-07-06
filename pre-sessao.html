@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Preparação da sua Leitura, Jogo da Alma</title>
 <meta name="robots" content="noindex">
-<!-- SUBSTITUIR: [URL_WEBHOOK_N8N] no script do fim. Prefill: pre-sessao.html?nome=X&email=Y -->
+<!-- SUBSTITUIR: https://projeto1-n8n.dpmo2b.easypanel.host/webhook/jogo-da-alma-leads no script do fim. Prefill: pre-sessao.html?nome=X&email=Y -->
 <style>
   :root{--bg:#0B0F1A;--card:#151C2C;--border:#232B3E;--text:#E5E7EB;--muted:#9CA3AF;
         --violet:#8B5CF6;--violet2:#A855F7;--gold:#EAB308;--green:#22C55E}
@@ -228,7 +228,7 @@ form.addEventListener('submit', async function(e){
   };
   const btn = form.querySelector('.btn'); btn.disabled = true; btn.textContent = 'Enviando…';
   try{
-    await fetch('[URL_WEBHOOK_N8N]',{method:'POST',
+    await fetch('https://projeto1-n8n.dpmo2b.easypanel.host/webhook/jogo-da-alma-leads',{method:'POST',
       headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
   }catch(err){}
   document.getElementById('form-area').style.display='none';
